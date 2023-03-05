@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class Basket {
     ArrayList<String> key = new ArrayList<>();
@@ -18,11 +17,18 @@ public class Basket {
         return key.toString() + "-" + value.toString();
     }
 
-    public float sumBue() {
+    public float sumBuy() {
         float sum = 0.0f;
         for (int i = 0; i < value.size(); i++) {
             sum += value.get(i);
         }
         return (float) Math.round(sum * 100) / 100;
+    }
+
+    public void printBasket(){
+        System.out.println("Добавленные товары:");
+        for (int i = 0; i < this.value.size(); i++) {
+            System.out.println(this.key.get(i) + " по цене: " + this.value.get(i));
+        }
     }
 }
