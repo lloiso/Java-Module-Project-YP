@@ -7,10 +7,7 @@ public class Main {
     static Basket basket = new Basket();
 
     public static void main(String[] args) {
-        System.out.println("хуй на все на это и в небо по трубе");
-
-
-        System.out.println("введи > 1");
+        System.out.println("на скольких делить?");
 
         numberOfPayer = calcPayer();
 
@@ -21,73 +18,37 @@ public class Main {
         basket.printBasket();
 
         System.out.println("каждый заплатит " + check() + " " + padej());
-
-        System.out.println("yea boi");
-
-        System.out.println(basket.toString());
-        System.out.println(basket.sumBuy());
-
-
     }
 
     public static int calcPayer() {
-        int num = 0;
+        int num;
         while (true) {
             if (!scanner.hasNextInt()) {
                 System.out.println("введи число");
                 scanner.next();
             } else {
+                num = scanner.nextInt();
+                if (num< 1){
+                    System.out.println("не на кого делить");
+
+                }else if (num == 1){
+                    System.out.println("сам плати");
+                }else
                 break;
             }
-        }
-        num = scanner.nextInt();
-        while (num <= 1) {
-            if (num < 1) {
-                System.out.println("не на кого делить");
-            } else {
-                System.out.println("сам плати");
-            }
-            num = scanner.nextInt();
         }
         return num;
     }
 
     public static void requestItem() {
         String key;
-        float value = 0.0f;
-//        System.out.println("че купил?");
-
-//        key = scanner.next();
-//        if (key.equalsIgnoreCase("qwe")) {
-//            System.out.println("ты нихера не купил? серьезно?");
-//            return;
-//        }
-
-//        while (true) {
-//            scanner.nextLine();
-//
-//            if (!scanner.hasNextFloat()) {
-//                System.out.println("введи float");
-//            } else {
-//                value = scanner.nextFloat();
-////                if (value < 0.0f) {
-////                    System.out.println("<0");
-////                    return;
-////                }
-//                break;
-//            }
-//        }
-
-//        basket.addKey(key);
-//        basket.addValue(value);
-//        System.out.println("удачно");
-//        System.out.println("=============");
+        float value;
 
         while (true) {
-            System.out.println("че купил?");
+            System.out.println("если закончил с покупками то набери 'Завершить' иначе введи наименование товара и цену");
             key = scanner.next();
 
-            if (key.equalsIgnoreCase("qwe")) {
+            if (key.equalsIgnoreCase("Завершить")) {
                 break;
             }
             basket.addKey(key);
@@ -95,23 +56,17 @@ public class Main {
             while (true) {
                 scanner.nextLine();
                 if (!scanner.hasNextFloat()) {
-                    System.out.println("введи float");
+                    System.out.println("введи значение в формате ХХ,ХХ");
                 } else {
                     value = scanner.nextFloat();
-                    break;
+                    if (value < 0) {
+                        System.out.println("цена не может быть отрицательной");
+                    }else break;
                 }
             }
-
-//            if (value < 0.0f) {
-//                System.out.println("<0");
-//            } else {
-                basket.addValue(value);
-                System.out.println("удачно");
-                System.out.println("=============");
-//            }
-//            } else break;
-
-
+            basket.addValue(value);
+            System.out.println("успешно добавленно в корзину");
+            System.out.println("=============");
         }
     }
 
