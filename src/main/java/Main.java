@@ -77,9 +77,11 @@ public class Main {
     public static String padej() {
         int floor = (int) check();
 
-        if (floor % 10 > 1 && (floor % 10) < 5) {
+        if ((floor%100)>=10 && (floor%100)<20){
+            return "рублей";
+        } else if (floor % 10 > 1 && (floor % 10) < 5) {
             return "рубля";
-        } else if (floor % 10 >= 5 && (floor % 10) < 10) {
+        } else if (floor % 10 >= 5) {
             return "рублей";
         } else {
             return "рубль";
