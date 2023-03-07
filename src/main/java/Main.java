@@ -28,13 +28,13 @@ public class Main {
                 scanner.next();
             } else {
                 num = scanner.nextInt();
-                if (num< 1){
+                if (num < 1) {
                     System.out.println("не на кого делить");
 
-                }else if (num == 1){
+                } else if (num == 1) {
                     System.out.println("сам плати");
-                }else
-                break;
+                } else
+                    break;
             }
         }
         return num;
@@ -61,7 +61,7 @@ public class Main {
                     value = scanner.nextFloat();
                     if (value < 0) {
                         System.out.println("цена не может быть отрицательной");
-                    }else break;
+                    } else break;
                 }
             }
             basket.addValue(value);
@@ -77,7 +77,7 @@ public class Main {
     public static String padej() {
         int floor = (int) check();
 
-        if ((floor%100)>=10 && (floor%100)<20){
+        if ((floor % 100) >= 10 && (floor % 100) <= 20) {
             return "рублей";
         } else if (floor % 10 > 1 && (floor % 10) < 5) {
             return "рубля";
